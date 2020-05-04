@@ -17,4 +17,10 @@ interface ApiClient{
     fun getAlbumsByArtistName(
         @Query("s") s: String
     ): Call<Albums>
+
+    @GET("searchalbum.php")
+    fun getAlbumDetailsByName(
+        @Query("a") a: String
+    ): Call<Albums>
+
 }

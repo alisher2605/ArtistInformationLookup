@@ -34,6 +34,9 @@ class AlbumAdapter(
             if (!album.thumbnailPath.isNullOrBlank()){
                 Picasso.get().load(album.thumbnailPath).into(view.albumThumb)
             }
+            view.setOnClickListener{
+                onClick(album)
+            }
         }
     }
 }

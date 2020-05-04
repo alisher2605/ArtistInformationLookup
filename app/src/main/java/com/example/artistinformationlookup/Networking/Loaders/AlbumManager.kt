@@ -23,5 +23,18 @@ class AlbumManager (
          )
  }
 
+    fun getAlbumsByAlbumName(name: String){
+        ApiFactory.getApiCient()
+            .getAlbumDetailsByName(name).enqueue(object : Callback<Albums>{
+                override fun onFailure(call: Call<Albums>, t: Throwable) {
+                    onError(t)
+                }
+
+                override fun onResponse(call: Call<Albums>, response: Response<Albums>) {
+                    onSuccess(response.body()!!)
+                }
+            }
+            )
+    }
 
 }

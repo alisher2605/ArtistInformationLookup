@@ -18,6 +18,7 @@
         android:textSize="@dimen/very_big_text"
         android:textColor="@android:color/white"
         android:textStyle="bold"
+        android:layout_marginBottom="10dp"
         />
     <androidx.recyclerview.widget.RecyclerView
         android:background="@color/colorPrimaryDark"

@@ -1,6 +1,8 @@
 package com.example.artistinformationlookup.Activities.Information
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,14 +29,19 @@ class ArtistAlbumActivity : AppCompatActivity() {
         AlbumManager(
             onSuccess = {
                 val albums = it.album
-                list_albums.adapter = AlbumAdapter(ArrayList(albums), onClick = {album ->
+                list_albums.adapter = AlbumAdapter(ArrayList(albums), onClick = {
+                      album ->
+                    val intent = Intent(this, AlbumInfoActivity::class.java)
+                    intent.putExtra("ALBUMNAME", album.albumName)
+                    intent.putExtra("ARTISTNAME", album.artist)
+                    startActivity(intent)
+                    Log.d("taaag", "Works")
                 })
                 list_albums.layoutManager = LinearLayoutManager(this)
             },
             onError = {
                 Toast.makeText(this, it.message , Toast.LENGTH_LONG).show()
             }
-
         ).getAlbumsByArtistName(name)
 
     }

@@ -35,18 +35,19 @@ class ArtistInfoActivity : AppCompatActivity() {
                     val artist = artists.get(0)
                     artistId = artist.id
                     Log.d("taag", artist.toString())
-                    arName.text = artist.artistName
-                    arBio.text = artist.biography
-                    arYear.text = artist.bornYear.toString()
-                    arGenre.text = artist.genre
-                    arWebsite.text = artist.website
+                    artistName.text = artist.artistName
+                    artistBio.text = artist.biography
+                    artistYear.text = artist.bornYear.toString()
+                    artistGenre.text = artist.genre
+                    artistWebsite.text = artist.website
                     if (!artist.thumbnailPath.isNullOrBlank()) {
                         Picasso.get().load(artist.thumbnailPath).into(arthumb)
                     }
                     if (!artist.logoPath.isNullOrBlank()) {
-                        Picasso.get().load(artist.logoPath).into(arLogo)
+                        Picasso.get().load(artist.logoPath).into(artistLogo)
                     }
                 }
+
             },
             onError = {
                 Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
