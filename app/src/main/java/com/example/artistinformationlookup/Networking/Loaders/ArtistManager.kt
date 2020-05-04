@@ -1,11 +1,12 @@
-package com.example.artistinformationlookup.Networking
+package com.example.artistinformationlookup.Networking.Loaders
 
-import com.example.artistinformationlookup.Networking.Repositories.ArtistResponse
+import com.example.artistinformationlookup.Networking.ApiFactory
+import com.example.artistinformationlookup.Networking.Responses.ArtistResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ArtistLoader(
+class ArtistManager(
     private val onSuccess:(ArtistResponse) -> Unit,
     private val onError:(Throwable) -> Unit
 ) {

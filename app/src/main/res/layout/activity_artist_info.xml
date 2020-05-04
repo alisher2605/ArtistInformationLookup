@@ -48,40 +48,39 @@
                   android:id="@+id/arName"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:layout_alignParentEnd="true"
-                  android:layout_margin="5dp"
+                  android:layout_margin="@dimen/text_margin"
                   android:text="@string/template_text"
                   android:textColor="@android:color/white"
-                  android:textSize="15sp"
+                  android:textSize="@dimen/text_big"
                   android:textStyle="bold" />
 
               <TextView
                   android:id="@+id/arGenre"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:layout_margin="5sp"
+                  android:layout_margin="@dimen/text_margin"
                   android:text="@string/genre"
                   android:textColor="@android:color/white"
-                  android:textSize="13sp"
+                  android:textSize="@dimen/text_small"
                   android:textStyle="bold" />
 
               <TextView
                   android:id="@+id/arYear"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:layout_margin="5dp"
+                  android:layout_margin="@dimen/text_margin"
                   android:text="@string/template_text"
                   android:textColor="@android:color/white"
-                  android:textSize="13sp" />
+                  android:textSize="@dimen/text_small" />
 
               <TextView
                   android:id="@+id/arWebsite"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:layout_margin="5dp"
+                  android:layout_margin="@dimen/text_margin"
                   android:text="@string/template_text"
                   android:textColor="@android:color/white"
-                  android:textSize="13sp" />
+                  android:textSize="@dimen/text_small" />
           </LinearLayout>
       </RelativeLayout>
   </LinearLayout>
@@ -94,7 +93,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-
             >
 
             <ImageButton
@@ -109,42 +107,13 @@
             <TextView
                 android:id="@+id/arBio"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="@dimen/text_margin"
                 android:layout_width="wrap_content"
-                android:textSize="13sp"
+                android:textSize="@dimen/text_small"
                 android:scrollbars="vertical"
                 android:text="@string/template_text"
                 android:textColor="@android:color/white" />
 
         </LinearLayout>
     </ScrollView>
-<!--    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-
-
-
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="10sp">
-
-
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>-->
 </LinearLayout>

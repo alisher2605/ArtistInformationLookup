@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.artistinformationlookup.Networking.ArtistLoader
+import com.example.artistinformationlookup.Networking.Loaders.ArtistManager
 import com.example.artistinformationlookup.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_artist_info.*
@@ -20,8 +20,6 @@ class ArtistInfoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_artist_info)
         val artistName = intent.getStringExtra(ARTISTNAME)
         Toast.makeText(this, artistName, Toast.LENGTH_LONG).show()
-        //Забавно, если передать значение null и зайти в инфу об артистах,
-        // то он найдет группу каких-то ноунеймов по дефолтному значению textview  lorem ipsum
         loadArtistInfo(artistName)
 
     }
@@ -29,11 +27,11 @@ class ArtistInfoActivity : AppCompatActivity() {
 
 
     private fun loadArtistInfo(name: String){
-        ArtistLoader(
+        ArtistManager(
             onSuccess = {
                 val artists = it.artists
                 Log.d("taag", artists.toString())
-                if(!artists.isNullOrEmpty()){
+                if (!artists.isNullOrEmpty()) {
                     val artist = artists.get(0)
                     artistId = artist.id
                     Log.d("taag", artist.toString())
@@ -51,7 +49,7 @@ class ArtistInfoActivity : AppCompatActivity() {
                 }
             },
             onError = {
-                Toast.makeText(this, it.message , Toast.LENGTH_LONG).show()
+                Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
             }
 
         ).getArtistInfo(name)

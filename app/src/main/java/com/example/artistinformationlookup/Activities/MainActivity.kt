@@ -2,6 +2,7 @@ package com.example.artistinformationlookup.Activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.artistinformationlookup.Activities.Information.AlbumInfoActivity
@@ -48,16 +49,34 @@ class MainActivity : AppCompatActivity() {
 
         category_list.adapter = CategoryAdapter(items = items, onItemClick = {
             if (it.categoryName ==  "Artist Info"){
+                //Забавно, если передать значение null и зайти в инфу об артистах,
+                // то он найдет группу каких-то ноунеймов по дефолтному значению textview  lorem ipsum
                 val intent = Intent(this, ArtistInfoActivity::class.java)
                     val artistText = textFindArtist.text.toString()
-                    intent.putExtra("ARTISTNAME", artistText)
-                startActivity(intent)
-                finish()
+                    if (textFindArtist.text.isEmpty()){
+                        Toast.makeText(this, "Please input artist's name", Toast.LENGTH_LONG).show()
+                    }
+                else{
+                        intent.putExtra("ARTISTNAME", artistText)
+                        startActivity(intent)
+                        // Возвращаться с той страницы когда это закрывается очень не удобно
+                        // Так как восле нажатия на категорию других активити нет то я решил убрать finish()
+//                      finish()
+                    }
             }
             if (it.categoryName == "Artist's Albums"){
                 val intent = Intent(this, ArtistAlbumActivity::class.java)
-                startActivity(intent)
-                finish()
+                val artistText = textFindArtist.text.toString()
+                if (textFindArtist.text.isEmpty()){
+                    Toast.makeText(this, "Please input artist's name", Toast.LENGTH_LONG).show()
+                }
+                else{
+                    intent.putExtra("ARTISTNAME", artistText)
+                    startActivity(intent)
+                    // Возвращаться с той страницы когда это закрывается очень не удобно
+                        // Так как восле нажатия на категорию других активити нет то я решил убрать finish()
+//                   finish()
+                }
             }
             if (it.categoryName == "Album Info"){
                 val intent = Intent(this, AlbumInfoActivity::class.java)

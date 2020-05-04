@@ -1,4 +1,4 @@
-package com.example.artistinformationlookup.Networking.Repositories
+package com.example.artistinformationlookup.Networking.Responses
 
 import com.google.gson.annotations.SerializedName
 
