@@ -41,7 +41,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_gravity="end"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="15dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -51,7 +51,7 @@
                     android:layout_margin="@dimen/text_margin"
                     android:text="@string/template_text"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/text_big"
+                    android:textSize="@dimen/very_big_text"
                     android:textStyle="bold" />
 
                 <TextView
@@ -59,33 +59,44 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin"
-                    android:text="@string/genre"
+                    android:text="@string/template_text"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/text_small"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/medium_text"
+                     />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginEnd="15dp"
-        android:layout_marginStart="15dp">
+        android:layout_height="250dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/albumDescription"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
-                android:layout_width="wrap_content"
-                android:textSize="@dimen/text_small"
                 android:scrollbars="vertical"
                 android:text="@string/template_text"
-                android:textColor="@android:color/white" />
-
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_small" />
         </LinearLayout>
     </ScrollView>
+ <androidx.recyclerview.widget.RecyclerView
+     android:background="@color/colorPrimaryDark"
+     android:id="@+id/list_album_tracks"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:layout_marginTop="10dp"
+     android:layout_marginBottom="10dp"
+     android:layout_marginStart="15dp"
+     android:layout_marginEnd="15dp"
+     />
 </LinearLayout>

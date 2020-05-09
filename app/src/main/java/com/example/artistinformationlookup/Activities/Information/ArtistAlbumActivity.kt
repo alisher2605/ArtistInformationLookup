@@ -34,6 +34,7 @@ class ArtistAlbumActivity : AppCompatActivity() {
                     val intent = Intent(this, AlbumInfoActivity::class.java)
                     intent.putExtra("ALBUMNAME", album.albumName)
                     intent.putExtra("ARTISTNAME", album.artist)
+                    intent.putExtra("ALBUMID", album.id)
                     startActivity(intent)
                     Log.d("taaag", "Works")
                 })
