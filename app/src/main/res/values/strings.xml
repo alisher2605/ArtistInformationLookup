@@ -4,4 +4,12 @@
     <string name="search_artist">Search artist...</string>
     <string name="genre">Genre</string>
     <string name="duration">Duration</string>
+    <string name="txtOpenInBrowser">Open video in browser</string>
+    <string name="enter_password">Enter password</string>
+    <string name="don_t_have_an_account_sign_up">Don\'t have an account? Sign up</string>
+    <string name="sign_in">Sign in</string>
+    <string name="enter_username">Enter username</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="enter_login">Enter login</string>
+    <string name="empty_username_error">Enter your username</string>
 </resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "168382250948",
+    "firebase_url": "https://finalprojectartistlookup.firebaseio.com",
+    "project_id": "finalprojectartistlookup",
+    "storage_bucket": "finalprojectartistlookup.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168382250948:android:b9fcfc1da62362be81ee91",
+        "android_client_info": {
+          "package_name": "com.example.artistinformationlookup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168382250948-orroknfbg64egannskktlnhlrs3cp621.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjrcosZ-Zt8A-NXJURKDXad6wHkfvPiAk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168382250948-orroknfbg64egannskktlnhlrs3cp621.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

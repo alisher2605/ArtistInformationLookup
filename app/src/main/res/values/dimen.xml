@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="text_margin">5dp</dimen>
-    <dimen name="text_big">15sp</dimen>
-    <dimen name="text_small">13sp</dimen>
-    <dimen name="very_big_text">25sp</dimen>
-    <dimen name="medium_text">19dp</dimen>
-</resources>

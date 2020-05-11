@@ -2,4 +2,15 @@
 <resources>
     <dimen name="category_text_size">20sp</dimen>
     <dimen name="category_image_height">150dp</dimen>
+    <dimen name="RegistrationCardHeight">250dp</dimen>
+    <dimen name="RegistrationCardWidth">280dp</dimen>
+    <dimen name="RegistrationButtonHeight">40dp</dimen>
+    <dimen name="goToRegistration">16sp</dimen>
+    <dimen name="authFormTopMargin">150dp</dimen>
+    <dimen name="text_margin">5dp</dimen>
+    <dimen name="text_big">15sp</dimen>
+    <dimen name="text_small">13sp</dimen>
+    <dimen name="very_big_text">25sp</dimen>
+    <dimen name="medium_text">19dp</dimen>
+    <dimen name="button_bottom_margin">5dp</dimen>
 </resources>

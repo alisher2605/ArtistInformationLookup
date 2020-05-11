@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Information.AlbumInfoActivity"></activity>
+        <activity android:name=".Activities.Information.FavoritesArtistsActivity"></activity>
+        <activity android:name=".Activities.Authorization.LoginActivity" />
+        <activity android:name=".Activities.Authorization.RegistrationActivity" />
+        <activity android:name=".Activities.Information.TrackVideoActivity" />
+        <activity android:name=".Activities.Information.AlbumInfoActivity" />
         <activity android:name=".Activities.Information.ArtistAlbumActivity" />
         <activity android:name=".Activities.Information.ArtistInfoActivity" />
         <activity android:name=".Activities.MainActivity">

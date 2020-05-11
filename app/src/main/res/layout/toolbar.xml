@@ -11,6 +11,8 @@
     android:textAlignment="center"
 
     >
-
+    <item android:id="@+id/menu_new_message"
+        android:title="New Message"
+        app:showAsAction="ifRoom"/>
 </androidx.appcompat.widget.Toolbar>
 

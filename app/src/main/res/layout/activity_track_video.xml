@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Information.TrackVideoActivity"
+    android:orientation="vertical"
+    android:background="@color/textSearchBackground"
+
+    >
+
+<Button
+    android:id="@+id/btnOpenTrackInBrowser"
+    android:layout_width="300dp"
+    android:layout_height="50dp"
+    android:background="@drawable/open_video_button_props"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    android:layout_marginBottom="@dimen/button_bottom_margin"
+    android:text="@string/txtOpenInBrowser"
+    android:textAllCaps="false"
+    android:textColor="@android:color/white"
+    />
+
+    <VideoView
+        android:id="@+id/videoTest"
+        android:layout_width="400dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="229dp" />
+</RelativeLayout>

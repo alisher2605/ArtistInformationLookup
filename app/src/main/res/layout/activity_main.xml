@@ -8,10 +8,7 @@
     android:orientation="vertical"
     android:background="@color/colorPrimaryDark"
     >
-    <include
-        layout="@layout/toolbar"
-        android:id="@+id/toolbar"
-        />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,6 +19,7 @@
         >
 
         <EditText
+            android:inputType="textCapSentences"
             android:id="@+id/textFindArtist"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -56,6 +54,8 @@
             android:id="@+id/category_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+
 
     </FrameLayout>
 </LinearLayout>
