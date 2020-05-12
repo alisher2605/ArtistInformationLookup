@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "168382250948",
-    "firebase_url": "https://finalprojectartistlookup.firebaseio.com",
-    "project_id": "finalprojectartistlookup",
-    "storage_bucket": "finalprojectartistlookup.appspot.com"
+    "project_number": "307460571526",
+    "firebase_url": "https://alilisher1.firebaseio.com",
+    "project_id": "alilisher1",
+    "storage_bucket": "alilisher1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:168382250948:android:b9fcfc1da62362be81ee91",
+        "mobilesdk_app_id": "1:307460571526:android:817f743414d44311e5ec07",
         "android_client_info": {
           "package_name": "com.example.artistinformationlookup"
         }
       },
       "oauth_client": [
         {
-          "client_id": "168382250948-orroknfbg64egannskktlnhlrs3cp621.apps.googleusercontent.com",
+          "client_id": "307460571526-5q5ftus0sveufrorf6dn076jbgugb57n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCjrcosZ-Zt8A-NXJURKDXad6wHkfvPiAk"
+          "current_key": "AIzaSyBWfbWZi38o57K_2S7TTuERQYlkwcB9-i8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "168382250948-orroknfbg64egannskktlnhlrs3cp621.apps.googleusercontent.com",
+              "client_id": "307460571526-5q5ftus0sveufrorf6dn076jbgugb57n.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

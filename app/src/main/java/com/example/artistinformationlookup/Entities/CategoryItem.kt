@@ -1,4 +1,4 @@
-package com.example.artistinformationlookup
+package com.example.artistinformationlookup.Entities
 
 data class CategoryItem (
     val imageUrl: String,

@@ -23,10 +23,11 @@
       <ImageView
           android:id="@+id/arthumb"
           android:layout_width="130dp"
-          android:layout_height="120dp"
+          android:layout_height="140dp"
           android:layout_margin="5dp"
           android:background="@null"
           />
+
       <!--Что бы кое-как передвинуть текст в конец пришлось использовать RelativeLayout-->
       <RelativeLayout
           android:layout_width="wrap_content"
@@ -77,6 +78,15 @@
                   android:text="@string/template_text"
                   android:textColor="@android:color/white"
                   android:textSize="@dimen/text_small" />
+
+              <ImageButton
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_margin="@dimen/text_margin"
+                  android:id="@+id/btn_add_to_favorite"
+                  android:src="@android:drawable/btn_star_big_off"
+                  android:background="@color/colorPrimaryDark"
+                  />
           </LinearLayout>
       </RelativeLayout>
   </LinearLayout>
@@ -98,8 +108,8 @@
                 android:layout_gravity="left"
                 android:layout_margin="5dp"
                 android:background="@null"
-                android:scaleType="centerCrop"
-                />
+                android:scaleType="centerCrop" />
+
             <TextView
                 android:id="@+id/artistBio"
                 android:layout_height="wrap_content"

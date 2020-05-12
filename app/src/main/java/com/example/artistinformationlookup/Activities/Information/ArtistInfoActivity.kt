@@ -1,15 +1,23 @@
 package com.example.artistinformationlookup.Activities.Information
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.artistinformationlookup.Activities.Authorization.LoginActivity
+import com.example.artistinformationlookup.Entities.ArtistInfoItem
 import com.example.artistinformationlookup.Networking.Loaders.ArtistManager
 import com.example.artistinformationlookup.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_artist_info.*
 
 class ArtistInfoActivity : AppCompatActivity() {
+    private  val database by lazy{ FirebaseFirestore.getInstance()}
+    private  val auth by lazy{ FirebaseAuth.getInstance()}
+
     private var artistId = 0
     companion object{
         const val ARTISTNAME = "ARTISTNAME"
@@ -21,7 +29,8 @@ class ArtistInfoActivity : AppCompatActivity() {
         val artistName = intent.getStringExtra(ARTISTNAME)
         Toast.makeText(this, artistName, Toast.LENGTH_LONG).show()
         loadArtistInfo(artistName)
-
+        addToFavorites(artistName)
+        title = "Artist"
     }
 
 
@@ -32,7 +41,7 @@ class ArtistInfoActivity : AppCompatActivity() {
                 val artists = it.artists
                 Log.d("taag", artists.toString())
                 if (!artists.isNullOrEmpty()) {
-                    val artist = artists.get(0)
+                    val artist = artists[0]
                     artistId = artist.id
                     Log.d("taag", artist.toString())
                     artistName.text = artist.artistName
@@ -52,8 +61,53 @@ class ArtistInfoActivity : AppCompatActivity() {
             onError = {
                 Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
             }
-
         ).getArtistInfo(name)
     }
+
+
+    private fun addToFavorites(name: String){
+        ArtistManager(
+            onSuccess = {
+                val artists = it.artists
+                if (!artists.isNullOrEmpty()) {
+                    btn_add_to_favorite.setOnClickListener{
+                        if (auth.currentUser != null){
+                            val artist = artists[0]
+                            val artistInfo = ArtistInfoItem(
+                                auth.currentUser!!.uid,
+                                artist.id.toString(),
+                                artist.artistName,
+                                artist.bornYear.toString(),
+                                artist.genre,
+                                artist.thumbnailPath
+                            )
+                            insertFavoriteInDatabase(artist.artistName, artistInfo )
+                            Toast.makeText(this, "Success", Toast.LENGTH_LONG).show()
+                        }
+                        else{
+                            val intent = Intent(this, LoginActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                    }
+                }
+
+            },
+            onError = {
+                Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+            }
+        ).getArtistInfo(name)
+    }
+
+    private fun insertFavoriteInDatabase(
+         artistId:String,
+         artistInfo:ArtistInfoItem
+    ){
+        database.collection("favorites")
+            .add(artistInfo).addOnSuccessListener {
+                Log.d("taaag","Works!")
+            }
+    }
+
 
 }

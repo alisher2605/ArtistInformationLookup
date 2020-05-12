@@ -13,10 +13,11 @@ import com.example.artistinformationlookup.Activities.Information.ArtistAlbumAct
 import com.example.artistinformationlookup.Activities.Information.ArtistInfoActivity
 import com.example.artistinformationlookup.Activities.Information.FavoritesArtistsActivity
 import com.example.artistinformationlookup.Adapters.CategoryAdapter
-import com.example.artistinformationlookup.CategoryItem
+import com.example.artistinformationlookup.Entities.CategoryItem
 import com.example.artistinformationlookup.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
     private  val auth by lazy{ FirebaseAuth.getInstance()}
@@ -29,6 +30,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         showCategories()
+        title = "Main menu"
+        /*val btn = findViewById(R.id.imageButton1) as ImageButton
+        btn.setImageResource(R.drawable.actions_record)*/
     }
 
     //=============================

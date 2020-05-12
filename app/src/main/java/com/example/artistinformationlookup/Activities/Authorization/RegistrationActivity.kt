@@ -37,8 +37,9 @@ class RegistrationActivity : AppCompatActivity() {
             if(register_password.text.toString() != register_repeat_password.text.toString()){
                 register_repeat_password.error = "Passwords should be the same"
             }
-
-            signUp(register_login.text.toString(), register_password.text.toString())
+            else{
+                signUp(register_login.text.toString(), register_password.text.toString())
+            }
         }
     }
 

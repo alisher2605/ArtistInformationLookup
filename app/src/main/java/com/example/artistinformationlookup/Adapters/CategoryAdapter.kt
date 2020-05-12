@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.example.artistinformationlookup.CategoryItem
+import com.example.artistinformationlookup.Entities.CategoryItem
 import com.example.artistinformationlookup.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.show_choice_adapter.view.*
