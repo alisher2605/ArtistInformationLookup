@@ -2,15 +2,19 @@ package com.example.artistinformationlookup.Activities.Authorization
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.artistinformationlookup.Activities.MainActivity
+import com.example.artistinformationlookup.Networking.Responses.UserItem
 import com.example.artistinformationlookup.R
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_registration.*
 
 class RegistrationActivity : AppCompatActivity() {
     private  val auth by lazy{ FirebaseAuth.getInstance()}
+    private  val database by lazy{ FirebaseFirestore.getInstance()}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +42,7 @@ class RegistrationActivity : AppCompatActivity() {
                 register_repeat_password.error = "Passwords should be the same"
             }
             else{
-                signUp(register_login.text.toString(), register_password.text.toString())
+                signUp(register_login.text.toString(), register_password.text.toString(), register_username.text.toString())
             }
         }
     }
@@ -51,11 +55,17 @@ class RegistrationActivity : AppCompatActivity() {
 
     private fun signUp(
         email: String,
-        password: String
+        password: String,
+        username: String
     ){
         auth.createUserWithEmailAndPassword(email, password).
             addOnCompleteListener{task ->
                 if (task.isSuccessful){
+                    val user =
+                        UserItem(
+                            task.result?.user?.uid!!, email, username, emptyList()
+                        )
+                    saveUser(task.result?.user?.uid!!,user)
                     openMainActivity()
                     return@addOnCompleteListener
                 }
@@ -63,5 +73,14 @@ class RegistrationActivity : AppCompatActivity() {
             }
     }
 
-
+    private fun saveUser(
+        id: String,
+        user: UserItem
+    ){
+        database.collection("users")
+            .document(id)
+            .set(user).addOnSuccessListener {
+                Log.d("taaag","Success")
+            }
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.artistinformationlookup.Activities.Information
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -58,6 +59,11 @@ class AlbumInfoActivity : AppCompatActivity() {
                 return@TrackManager
             }
             list_album_tracks.adapter = TrackAdapter(ArrayList(tracks), onClick = {
+              val intent = Intent(this, TrackVideoActivity::class.java)
+                intent.putExtra("TRACKNAME", it.trackName)
+                intent.putExtra("THUMBPATH", it.thumbnailPath)
+                intent.putExtra("VIDEOLINK", it.musicVideo)
+                startActivity(intent)
             })
             list_album_tracks.layoutManager = LinearLayoutManager(this)
         },

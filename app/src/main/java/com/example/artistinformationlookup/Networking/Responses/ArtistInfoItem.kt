@@ -2,7 +2,8 @@ package com.example.artistinformationlookup.Networking.Responses
 
 import com.google.gson.annotations.SerializedName
 
-data class Artist(
+data class ArtistInfoItem(
+    val userId:String,
     @SerializedName("idArtist")
     val id : Int,
     @SerializedName("strArtist")
@@ -23,5 +24,5 @@ data class Artist(
 
 data class ArtistResponse(
     @SerializedName("artists")
-    val artists : List<Artist>
+    val favoriteArtists : List<ArtistInfoItem>
 )

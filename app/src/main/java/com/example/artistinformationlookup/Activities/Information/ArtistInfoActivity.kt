@@ -6,10 +6,11 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.artistinformationlookup.Activities.Authorization.LoginActivity
-import com.example.artistinformationlookup.Entities.ArtistInfoItem
 import com.example.artistinformationlookup.Networking.Loaders.ArtistManager
+import com.example.artistinformationlookup.Networking.Responses.ArtistInfoItem
 import com.example.artistinformationlookup.R
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_artist_info.*
@@ -38,7 +39,7 @@ class ArtistInfoActivity : AppCompatActivity() {
     private fun loadArtistInfo(name: String){
         ArtistManager(
             onSuccess = {
-                val artists = it.artists
+                val artists = it.favoriteArtists
                 Log.d("taag", artists.toString())
                 if (!artists.isNullOrEmpty()) {
                     val artist = artists[0]
@@ -68,29 +69,40 @@ class ArtistInfoActivity : AppCompatActivity() {
     private fun addToFavorites(name: String){
         ArtistManager(
             onSuccess = {
-                val artists = it.artists
+                val artists = it.favoriteArtists
                 if (!artists.isNullOrEmpty()) {
-                    btn_add_to_favorite.setOnClickListener{
-                        if (auth.currentUser != null){
+                    btn_add_to_favorite.setOnCheckedChangeListener { buttonView, isChecked ->
+                        buttonView.setOnClickListener {
+                        if (auth.currentUser != null) {
                             val artist = artists[0]
                             val artistInfo = ArtistInfoItem(
                                 auth.currentUser!!.uid,
-                                artist.id.toString(),
+                                artist.id,
                                 artist.artistName,
-                                artist.bornYear.toString(),
+                                artist.bornYear,
                                 artist.genre,
+                                artist.website,
+                                artist.biography,
+                                artist.logoPath,
                                 artist.thumbnailPath
                             )
-                            insertFavoriteInDatabase(artist.artistName, artistInfo )
-                            Toast.makeText(this, "Success", Toast.LENGTH_LONG).show()
+                            if (isChecked) {
+                                insertFavoriteInDatabase(artistInfo)
+                                Toast.makeText(this, "Success", Toast.LENGTH_LONG).show()
+                            }
+                            else{
+                                removeFavoriteInDatabase(artistInfo)
+                                Toast.makeText(this, "Removed", Toast.LENGTH_LONG).show()
+                            }
                         }
-                        else{
+                        else {
                             val intent = Intent(this, LoginActivity::class.java)
                             startActivity(intent)
                             finish()
                         }
                     }
                 }
+            }
 
             },
             onError = {
@@ -100,14 +112,29 @@ class ArtistInfoActivity : AppCompatActivity() {
     }
 
     private fun insertFavoriteInDatabase(
-         artistId:String,
-         artistInfo:ArtistInfoItem
+        favoriteArtistInfo:ArtistInfoItem
     ){
-        database.collection("favorites")
-            .add(artistInfo).addOnSuccessListener {
+        database.collection("users")
+            .document(auth!!.currentUser!!.uid)
+            .update("artists", FieldValue.arrayUnion(favoriteArtistInfo)).addOnSuccessListener {
                 Log.d("taaag","Works!")
+            }
+            .addOnFailureListener {
+                Log.d("taaag", it.localizedMessage)
             }
     }
 
-
+    private fun removeFavoriteInDatabase(
+        favoriteArtistInfo:ArtistInfoItem
+    ){
+        database.collection("users")
+            .document(auth!!.currentUser!!.uid)
+            .update("artists", FieldValue.arrayRemove(favoriteArtistInfo))
+            .addOnSuccessListener {
+                Log.d("taaag","Works!")
+            }
+            .addOnFailureListener {
+                Log.d("taaag", it.localizedMessage)
+            }
+    }
 }

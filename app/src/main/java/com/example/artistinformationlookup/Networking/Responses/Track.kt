@@ -13,8 +13,9 @@ data class Track (
     @SerializedName("strMood")
     val mood: String?,
     @SerializedName("strTrackThumb")
-    val thumbnailPath: String?
-
+    val thumbnailPath: String?,
+    @SerializedName("strMusicVid")
+    val musicVideo: String?
 )
 
 data class Tracks (
