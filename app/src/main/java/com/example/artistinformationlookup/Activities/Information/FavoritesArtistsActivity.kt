@@ -1,5 +1,6 @@
 package com.example.artistinformationlookup.Activities.Information
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -7,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.artistinformationlookup.Adapters.FavoriteArtistAdapter
 import com.example.artistinformationlookup.Networking.Responses.ArtistInfoItem
-import com.example.artistinformationlookup.Networking.Responses.UserItem
+import com.example.artistinformationlookup.Entities.UserItem
 import com.example.artistinformationlookup.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -20,33 +21,29 @@ class FavoritesArtistsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorites_artists)
-        showFavorite(auth.currentUser!!.uid)
+        loadFav(auth.currentUser!!.uid)
 
     }
-
-    private fun showFavorite(uid: String) {
+    private fun loadFav(uid: String){
         database.collection("users")
             .document(uid)
-            .addSnapshotListener { snapshot, e ->
-                if (e != null) {
-                    Log.d("taaag", e.localizedMessage)
+            .addSnapshotListener{snapshot, e->
+                if (e != null){
+                    Log.d("errrorr", e.localizedMessage)
                     return@addSnapshotListener
                 }
                 val user = snapshot?.toObject(UserItem::class.java)
-                if (user != null){
-                    displayFavArtists(user.favoriteArtists)
-                    Toast.makeText(this, user.favoriteArtists.toString(), Toast.LENGTH_LONG).show()
-                }
-                else{
-                    Toast.makeText(this, "DOESN'T WORK", Toast.LENGTH_LONG).show()
-                }
+                displayFavArtists(user!!.favoriteArtists)
+
+
             }
     }
-
     private fun displayFavArtists(artists: List<ArtistInfoItem>){
         favorite_artist_list.adapter = FavoriteArtistAdapter(
-            favoriteArtistList = artists, onClick = {
-                Toast.makeText(this,"sdasdasd", Toast.LENGTH_LONG).show()
+            artistList = artists, onClick = {
+               val intent = Intent(this, ArtistInfoActivity::class.java)
+                intent.putExtra("ARTISTNAME", it.artistName)
+                startActivity(intent)
             })
         favorite_artist_list.layoutManager = LinearLayoutManager(this)
     }

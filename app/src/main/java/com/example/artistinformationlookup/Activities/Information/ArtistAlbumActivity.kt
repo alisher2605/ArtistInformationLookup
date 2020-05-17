@@ -44,6 +44,5 @@ class ArtistAlbumActivity : AppCompatActivity() {
                 Toast.makeText(this, it.message , Toast.LENGTH_LONG).show()
             }
         ).getAlbumsByArtistName(name)
-
     }
 }

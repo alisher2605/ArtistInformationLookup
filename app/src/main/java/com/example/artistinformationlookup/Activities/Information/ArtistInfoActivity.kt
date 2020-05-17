@@ -116,7 +116,7 @@ class ArtistInfoActivity : AppCompatActivity() {
     ){
         database.collection("users")
             .document(auth!!.currentUser!!.uid)
-            .update("artists", FieldValue.arrayUnion(favoriteArtistInfo)).addOnSuccessListener {
+            .update("favoriteArtists", FieldValue.arrayUnion(favoriteArtistInfo)).addOnSuccessListener {
                 Log.d("taaag","Works!")
             }
             .addOnFailureListener {
@@ -129,7 +129,7 @@ class ArtistInfoActivity : AppCompatActivity() {
     ){
         database.collection("users")
             .document(auth!!.currentUser!!.uid)
-            .update("artists", FieldValue.arrayRemove(favoriteArtistInfo))
+            .update("favoriteArtists", FieldValue.arrayRemove(favoriteArtistInfo))
             .addOnSuccessListener {
                 Log.d("taaag","Works!")
             }

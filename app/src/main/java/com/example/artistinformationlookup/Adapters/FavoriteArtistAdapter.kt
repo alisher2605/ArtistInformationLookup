@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.favorite_adapter.view.*
 
 
 class FavoriteArtistAdapter(
-    private val favoriteArtistList: List<ArtistInfoItem>,
+    private val artistList: List<ArtistInfoItem>,
     private val onClick: (ArtistInfoItem) -> Unit)
     : RecyclerView.Adapter<FavoriteArtistAdapter.EventsHolder>(){
 
@@ -21,22 +21,23 @@ class FavoriteArtistAdapter(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.favorite_adapter, parent, false))
 
-    override fun getItemCount() = favoriteArtistList.size
+    override fun getItemCount() = artistList.size
 
     override fun onBindViewHolder(holder: EventsHolder, position: Int) =
-        holder.binding(favoriteArtistList[position], onClick)
+        holder.binding(artistList[position], onClick)
 
     class EventsHolder(private val view: View)
         : RecyclerView.ViewHolder(view){
-        fun binding(favoriteArtist: ArtistInfoItem, onClick: (ArtistInfoItem) -> Unit){
-            view.txtFavoriteName.text = favoriteArtist.artistName
-            view.txtFavoriteYear.text = favoriteArtist.bornYear.toString()
-            view.txtFavoriteGenre.text = favoriteArtist.genre.toString()
-            if (!favoriteArtist.thumbnailPath.isNullOrBlank()){
-                Picasso.get().load(favoriteArtist.thumbnailPath).into(view.albumThumb)
+        fun binding(artistList: ArtistInfoItem, onClick: (ArtistInfoItem) -> Unit){
+            view.txtFavoriteName.text = artistList.artistName
+            view.txtFavoriteYear.text = artistList.bornYear.toString()
+            view.txtFavoriteGenre.text = artistList.genre.toString()
+            if (!artistList.thumbnailPath.isNullOrBlank()){
+                Picasso.get().load(artistList.thumbnailPath).into(view.FavoriteThumb)
             }
+
             view.setOnClickListener{
-                onClick(favoriteArtist)
+                onClick(artistList)
             }
         }
     }

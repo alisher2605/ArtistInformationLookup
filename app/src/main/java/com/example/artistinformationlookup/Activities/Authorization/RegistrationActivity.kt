@@ -6,7 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.artistinformationlookup.Activities.MainActivity
-import com.example.artistinformationlookup.Networking.Responses.UserItem
+import com.example.artistinformationlookup.Entities.UserItem
 import com.example.artistinformationlookup.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore

@@ -21,6 +21,9 @@ data class ArtistInfoItem(
     @SerializedName("strArtistThumb")
     val thumbnailPath: String
 )
+{
+    constructor():this("", 0, "", 0, "", "", "", "", "")
+}
 
 data class ArtistResponse(
     @SerializedName("artists")

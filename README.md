@@ -3,7 +3,11 @@
 
 ### Sample application interface pictures
 
-![](MainMenu.jpg)
-![](ArtistProfile.jpg)
-![](AtristAlbunList.jpg)
-![](ArtistAlbum.jpg)
+![](Mobile/MainMenu.jpg)
+![](Mobile/ArtistInfo.jpg)
+![](Mobile/AlbumList.jpg)
+![](Mobile/AlbumInfo.jpg)
+![](Mobile/BrowserVideo.jpg)
+![](Mobile/FavoriteArtists.jpg)
+![](Mobile/Login.jpg)
+![](Mobile/Register.jpg)
